@@ -1,5 +1,7 @@
 # Sales App 
 
+![Center](https://capacitacion.uc.cl/images/noticias/gestion-de-bodegas.jpg)
+
 Sales application for a product distributor.
 
 ## Team
