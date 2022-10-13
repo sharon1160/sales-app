@@ -1,6 +1,6 @@
 # Sales App 
 
-Aplicación de ventas para una distribuidora de productos.
+Sales application for a product distributor.
 
 ## Team
 
