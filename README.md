@@ -59,7 +59,7 @@ Sales application for a product distributor.
 * We create a super user account to access the Django Admin.
 
    ```bash
-   py manage.py createsuperuser
+   python manage.py createsuperuser
    ````
 * We can validate by querying the auth_user table in the database.
 
