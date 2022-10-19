@@ -8,6 +8,9 @@ from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework import status
 
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+
 
 class ProductCategoryViewSet(ModelViewSet):
     """
@@ -22,6 +25,11 @@ class ProductCategoryViewSet(ModelViewSet):
 
     # Configuración para que el VIEW sea utilizado por usuarios autenticados.
     #permission_classes = [IsAuthenticated]
+
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['percent_discount']
+
+    search_fields = ['name']
 
 
 class GetProductCategoryWithToken(APIView):
