@@ -70,10 +70,10 @@ class UnitMeasure(models.Model):
     """
     Clase Unidad de Medida.
 
-    Ejem: 
+    Ejem:
         Kg -> Categoría (Peso)
-        Litro -> Categoría (Volumen), 
-        g (gramo) -> Categoría (Peso) 
+        Litro -> Categoría (Volumen),
+        g (gramo) -> Categoría (Peso)
     """
 
     id = models.AutoField(primary_key=True)
@@ -131,7 +131,10 @@ class ProductCategory(models.Model):
 
 
 class Product(models.Model):
-
+    """
+    Clase Producto.
+    Ejem: Arroz
+    """
     id = models.AutoField(primary_key=True)
 
     code = models.CharField(max_length=5, unique=True, verbose_name="Código")
@@ -192,11 +195,11 @@ class Product(models.Model):
         # Calculamos el monto de descuento
         self.discount_amount = round(
             (int(self.percent_discount)/100)*float(self.base_sale_price), 2)
-        
+
         # Calculamos el precio de venta
         self.sale_price = float(self.base_sale_price) - \
             float(abs(self.discount_amount))
-        
+
         # Guardamos información del modelo
         super(Product, self).save(*args, **kwargs)
 
