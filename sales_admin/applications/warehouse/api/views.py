@@ -26,10 +26,13 @@ class ProductCategoryViewSet(ModelViewSet):
     # Configuración para que el VIEW sea utilizado por usuarios autenticados.
     #permission_classes = [IsAuthenticated]
 
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filter_backends = [DjangoFilterBackend,
+                       filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['percent_discount']
 
     search_fields = ['name']
+
+    Ordering_fields = ['id', 'percent_discount']
 
 
 class GetProductCategoryWithToken(APIView):
