@@ -1,6 +1,6 @@
 ![Center](https://capacitacion.uc.cl/images/noticias/gestion-de-bodegas.jpg)
 
-# RESTful API - SalesApp 
+# RESTful API - SalesApp 👷
 
 This is the official repository of the "SalesApp" distributor's backend application.
   
@@ -10,47 +10,60 @@ The backend application is a RESTful API based on a wholesale distributor that s
 
 ## Content
 
-* [Tech Stack](#techstack)
-* [Architecture](#architecture)
-* [Code Structure](#code_structure)
-* [Requeriments](#requirements)
-* [Dependencies](#dependencies)
-* [Environment Variables](#env)
-* [Database Entity Model](#dbmodel)
-* [Database Information](#dbinfo)
-* Endpoints
-* [Install and Run](#install_run)
+* [Tech Stack](#techstack) :computer:
+* [Architecture](#architecture) :bank:
+* [Code Structure](#code_structure) :card_file_box:
+* [Requirements](#requirements) 📝
+* [Dependencies](#dependencies) :books:
+* [Environment Variables](#env) :sparkles:
+* [Database Entity Model](#dbmodel) :sparkles:
+* [Database Information](#dbinfo) :sparkles:
+* Endpoints :sparkles:
+* [Install and Run](#install_run) 🚀
 
 <a name="techstack"></a>
-## Tech Stack 
+## Tech Stack :computer:
 
 <a name="architecture"></a>
-## Architecture 
+## Architecture :bank:
 
 <a name="code_structure"></a>
-## Code Structure
+## Code Structure :card_file_box:
 
 <a name="requirements"></a>
-## Requeriments
+## Requirements 📝
+
+
 
 <a name="dependencies"></a>
-## Dependencies
+## Dependencies :books:
 
 <a name="env"></a>
-## Environment Variables
+## Environment Variables :sparkles:
 
 <a name="dbmodel"></a>
-## Database Entity Model
+## Database Entity Model :sparkles:
 
 <a name="dbinfo"></a>
-## Database Information
+## Database Information :sparkles:
 
+* Number of records per table
+* Size of each table
+* Table: Product
+* Table: Product Category
+* Table: UnitMeasure
+* Table: UnitMeasureCategory
+* Table: Currency
+* Table: Order
+* Table: Order Item
+* Table: Customer
+* Table: User
 
-## Endpoints
+## Endpoints :sparkles:
 
 
 <a name="install_run"></a>
-## Install and Run
+## Install and Run 🚀
 
 ### Create virtual environment
 
