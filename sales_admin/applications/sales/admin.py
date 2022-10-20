@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from applications.sales.models import Currency
+from applications.warehouse.models import Currency
 
 # Agregamos al modelo Currency al django admin
 admin.site.register(Currency)
