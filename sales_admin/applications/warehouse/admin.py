@@ -8,6 +8,7 @@ from applications.warehouse.models import Product
 
 # link: https://docs.djangoproject.com/en/4.1/ref/contrib/admin/
 
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     """
@@ -18,10 +19,11 @@ class ProductAdmin(admin.ModelAdmin):
     # Definimos los atributos que queremos mostrar en django admin (formulario)
     fields = ('code', 'name', 'product_category_id', 'unit_measure_id',
               'currency_id', 'purchase_price', 'base_sale_price', 'percent_discount')
-    
+
     # Definimos los atributos que queremos que se muestren en el listado de productos
     # display_sale_price: es una función que devuelve el precio de venta.
-    list_display = ["code", "name", "product_category_id", "display_sale_price"]
+    list_display = ["code", "name", "product_category_id",
+                    "display_sale_price", "stock", "active"]
 
     def display_sale_price(self, obj) -> str:
         """
@@ -32,6 +34,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     # Defimos el nombre de la columna
     display_sale_price.short_description = "Precio de Venta"
+
 
 # Agregamos al modelo UnitMeasureCategory al django admin
 admin.site.register(UnitMeasureCategory)
