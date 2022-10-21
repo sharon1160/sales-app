@@ -53,8 +53,8 @@ The backend application is a RESTful API based on a wholesale distributor that s
 
 ```bash
 database = dbstore
-user = root
-password = 1234
+user = ' '
+password = ' '
 host = 127.0.0.1
 port = 3306
 default-character-set = utf8
