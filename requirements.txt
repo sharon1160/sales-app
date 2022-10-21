@@ -2,6 +2,7 @@ asgiref==3.5.2
 autopep8==1.7.0
 Django==4.1.1
 django-cors-headers==3.13.0
+django-db-signals==0.1.1
 django-filter==22.1
 djangorestframework==3.14.0
 mysqlclient==2.1.1
