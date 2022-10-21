@@ -30,7 +30,11 @@ class Customer(models.Model):
 
     # razon social
     business_name = models.CharField(
-        max_length=60, blank=False, verbose_name="Razón Social")
+        max_length=50, blank=False, verbose_name="Razón Social")
+
+    # distrito
+    district = models.CharField(
+        max_length=60, verbose_name="Distrito")
 
     # categoria
     category = models.CharField(max_length=50, verbose_name="Categoría")
