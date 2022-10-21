@@ -2,6 +2,12 @@
 En el archivo models.py agregamos los modelos que utilizará nuestra aplicación.
 Los modelos de esta aplicación pueden ser utilizados desde otras aplicaciones.
 """
+# Importamos la clase post_save para actualizar campos de Order (subtotal, igv, total, discount_total)
+# Link: https://docs.djangoproject.com/en/3.0/ref/signals/#django.db.models.signals.post_save
+from django.db.models.signals import post_save
+
+from django.dispatch import receiver
+
 # Importamos la clase MinLengthValidator para agregar validacion
 # Link: https://docs.djangoproject.com/en/4.1/ref/validators/#module-django.core.validators
 from django.core.validators import MinLengthValidator
@@ -17,6 +23,9 @@ from django.db import models
 
 # Importamos la clase Product de la aplicación Warehouse
 from applications.warehouse.models import Product
+
+# Importamos la constante IGV
+from applications.sales.config import IGV_PERCENT
 
 
 class Customer(models.Model):
@@ -47,6 +56,9 @@ class Customer(models.Model):
         auto_now_add=True, verbose_name="Fecha de Creación")
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="Fecha de Modificación")
+
+    def __str__(self):
+        return self.business_name
 
     class Meta:
         db_table = "customer"
@@ -96,6 +108,9 @@ class Order(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="Fecha de Modificación")
 
+    def __str__(self):
+        return self.number
+
     class Meta:
         db_table = "order"
         verbose_name = "Pedido"
@@ -128,6 +143,53 @@ class OrderItem(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="Fecha de Modificación")
 
+    def __str__(self):
+        return self.order_id.number + " - " + self.product_id.name
+
+    def save(self, *args, **kwargs):
+        """
+        Sobre escribimos el método save de la clase Model para la clase OrderItem.
+        """
+        # Calculamos el precio total
+        self.total = round(float(self.product_id.sale_price)
+                           * int(self.quantity), 2)
+
+        # Guardamos información del modelo OrderItem
+        super(OrderItem, self).save(*args, **kwargs)
+
     class Meta:
         db_table = "order_item"
-        verbose_name = "Item Pedido"
+        verbose_name = "Detalle"
+
+
+# Método para actualizar los campos de Order (subtotal, igv, total, discount_total)
+@receiver(post_save, sender=OrderItem)
+def update_order(sender, instance, **kwargs):
+
+    # Sumamos al subtotal de la orden de pedido
+    instance.order_id.subtotal = round(float(
+        instance.order_id.subtotal) + float(instance.total), 2)
+
+    # Actualizamos el igv del pedido
+    instance.order_id.igv = round(
+        float(instance.order_id.subtotal) * (IGV_PERCENT/100), 2)
+
+    # Actualizamos el total del pedido
+    instance.order_id.total = round(
+        float(instance.order_id.subtotal) + float(instance.order_id.igv), 2)
+
+    # Actualizamos el descuento total del pedido
+    instance.order_id.discount_total = round(
+        float(instance.order_id.discount_total) + float(instance.product_id.discount_amount), 2)
+
+    instance.order_id.save()
+
+
+# Método para actualizar los stock del producto
+@receiver(post_save, sender=OrderItem)
+def update_stock(sender, instance, **kwargs):
+
+    # Actualizamos stock del producto
+    instance.product_id.stock -= abs(instance.quantity)
+
+    instance.product_id.save()
