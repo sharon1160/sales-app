@@ -65,14 +65,14 @@ class Order(models.Model):
                               MinLengthValidator(5)], verbose_name="Número de Pedido")
 
     # fecha de pedido
-    date = models.DateTimeField(verbose_name="Fecha de Pedido")
+    date = models.DateField(verbose_name="Fecha de Pedido")
 
     # direccion de entrega
     delivery_address = models.CharField(
         max_length=150, verbose_name="Dirección de Entrega")
 
     # fecha de entrega
-    delivery_date = models.DateTimeField(verbose_name="Fecha de Entrega")
+    delivery_date = models.DateField(verbose_name="Fecha de Entrega")
 
     # foreign_key: cliente
     customer_id = models.ForeignKey(
