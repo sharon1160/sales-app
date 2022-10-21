@@ -61,8 +61,8 @@ class Order(models.Model):
     id = models.AutoField(primary_key=True)
 
     # numero de pedido
-    number = models.CharField(unique=True, max_length=5, validators=[
-                              MinLengthValidator(5)], verbose_name="Número de Pedido")
+    number = models.CharField(unique=True, max_length=9, validators=[
+                              MinLengthValidator(9)], verbose_name="Número de Pedido")
 
     # fecha de pedido
     date = models.DateField(verbose_name="Fecha de Pedido")
