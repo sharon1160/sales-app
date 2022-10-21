@@ -10,48 +10,73 @@ The backend application is a RESTful API based on a wholesale distributor that s
 
 ## Content
 
-- [Tech Stack](#techstack) 💻
-- [Architecture](#architecture) 🏦
-- [Code Structure](#code_structure) 🗃
+- [Tech Stack](#techstack) :computer:
+- [Architecture](#architecture) :bank:
+- [Code Structure](#code_structure) :card_file_box:
 - [Requirements](#requirements) 📝
-- [Dependencies](#dependencies) 📚
-- [Environment Variables](#env) ✨
-- [Database Entity Model](#dbmodel) ✨
-- [Database Information](#dbinfo) ✨
-- Endpoints ✨
+- [Dependencies](#dependencies) :books:
+- [Environment Variables](#env) :sparkles:
+- [Database Entity Model](#dbmodel) :sparkles:
+- [Database Information](#dbinfo) :sparkles:
+- Endpoints :sparkles:
 - [Install and Run](#install_run) 🚀
 
-`<a name="techstack"></a>`
+<a name="techstack"></a>
 
-## Tech Stack 💻
+## Tech Stack :computer:
 
-`<a name="architecture"></a>`
+<a name="architecture"></a>
 
-## Architecture 🏦
+## Architecture :bank:
 
-`<a name="code_structure"></a>`
+<a name="code_structure"></a>
 
-## Code Structure 🗃
+## Code Structure :card_file_box:
 
-`<a name="requirements"></a>`
+<a name="requirements"></a>
 
 ## Requirements 📝
 
-`<a name="dependencies"></a>`
+- Python 3.10.4
+- Django 4.1.1
+- Docker 20.10.16
+- MySQL 8.0.30
+- MySQL Workbench 8.0.30
 
-## Dependencies 📚
+<a name="dependencies"></a>
 
-`<a name="env"></a>`
+## Dependencies :books:
 
-## Environment Variables ✨
+- "django-cors-headers": "3.13.0"
+- "rest_framework.authtoken": "2.1.4"
+- "django-filter": "22.1"
+- "djangorestframework": "3.14.0"
+- "mysqlclient": "2.1.1"
 
-`<a name="dbmodel"></a>`
+<a name="env"></a>
 
-## Database Entity Model ✨
+## Environment Variables :sparkles:
 
-`<a name="dbinfo"></a>`
+```bash
+database = dbstore
+user = ' '
+password = ' '
+host = 127.0.0.1
+port = 3306
+default-character-set = utf8
+```
 
-## Database Information ✨
+<a name="dbmodel"></a>
+
+## Database Entity Model :sparkles:
+
+Based on the requirements, a basic entity model of a relational database was defined to cover the scope of the project: develop an API that allows creating orders.
+
+![image Model Database](https://github.com/sharon1160/sales-app/blob/main/imgs/db_diagram.png)
+
+<a name="dbinfo"></a>
+
+## Database Information :sparkles:
 
 - Number of records per table
 - Size of each table
@@ -61,13 +86,13 @@ The backend application is a RESTful API based on a wholesale distributor that s
 - Table: UnitMeasureCategory
 - Table: Currency
 - Table: Order
-- Table: Order Item
+- Table: OrderItem
 - Table: Customer
 - Table: User
 
-## Endpoints ✨
+## Endpoints :sparkles:
 
-`<a name="install_run"></a>`
+<a name="install_run"></a>
 
 ## Install and Run 🚀
 
