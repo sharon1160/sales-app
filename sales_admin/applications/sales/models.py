@@ -26,7 +26,7 @@ class Customer(models.Model):
     """
     id = models.AutoField(primary_key=True)
 
-    code = models.CharField(max_length=5, unique=True, verbose_name="Código")
+    code = models.CharField(max_length=3, unique=True, verbose_name="Código")
 
     # razon social
     business_name = models.CharField(
