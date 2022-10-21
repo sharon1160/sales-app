@@ -4,7 +4,7 @@
 
 This is the official repository of the "SalesApp" distributor's backend application.
   
-## Visión general
+## Overview
 
 The backend application is a RESTful API based on a wholesale distributor that sells different brands of products to small companies in the Metropolitan City of Lima. This API will allow the distributor to integrate your website or mobile application; in addition to facilitating integration with other e-commerce platforms.
 
@@ -33,16 +33,39 @@ The backend application is a RESTful API based on a wholesale distributor that s
 <a name="requirements"></a>
 ## Requirements 📝
 
-
+* Python 3.10.4
+* Django 4.1.1
+* Docker 20.10.16
+* MySQL 8.0.30
+* MySQL Workbench 8.0.30
 
 <a name="dependencies"></a>
 ## Dependencies :books:
 
+* "django-cors-headers": "3.13.0"
+* "rest_framework.authtoken": "2.1.4" 
+* "django-filter": "22.1"
+* "djangorestframework": "3.14.0"
+* "mysqlclient": "2.1.1"
+
 <a name="env"></a>
 ## Environment Variables :sparkles:
 
+```bash
+database = dbstore
+user = root
+password = 1234
+host = 127.0.0.1
+port = 3306
+default-character-set = utf8
+```
+
 <a name="dbmodel"></a>
 ## Database Entity Model :sparkles:
+
+Based on the requirements, a basic entity model of a relational database was defined to cover the scope of the project: develop an API that allows creating orders.
+
+![image Model Database](https://github.com/sharon1160/sales-app/blob/main/imgs/db_diagram.png)
 
 <a name="dbinfo"></a>
 ## Database Information :sparkles:
@@ -55,7 +78,7 @@ The backend application is a RESTful API based on a wholesale distributor that s
 * Table: UnitMeasureCategory
 * Table: Currency
 * Table: Order
-* Table: Order Item
+* Table: OrderItem
 * Table: Customer
 * Table: User
 
