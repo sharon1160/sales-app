@@ -31,6 +31,8 @@ The backend application is a RESTful API based on a wholesale distributor that s
 <a name="architecture"></a>
 ## Architecture :bank:
 
+![image Model Database](https://github.com/sharon1160/sales-app/blob/main/imgs/diagram_arquitec.PNG)
+
 <a name="code_structure"></a>
 ## Code Structure :card_file_box:
 
