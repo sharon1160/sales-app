@@ -79,16 +79,44 @@ Based on the requirements, a basic entity model of a relational database was def
 ## Database Information :sparkles:
 
 * Number of records per table
-* Size of each table
+
+  ![records](https://github.com/sharon1160/sales-app/blob/main/imgs/records.jpg)
+  
 * Table: Product
+
+  ![product](https://github.com/sharon1160/sales-app/blob/main/imgs/product.jpg)
+  
 * Table: Product Category
+
+  ![product category](https://github.com/sharon1160/sales-app/blob/main/imgs/product_category.jpg)
+
 * Table: UnitMeasure
+
+  ![unit measure](https://github.com/sharon1160/sales-app/blob/main/imgs/unit_measure.jpg)
+
 * Table: UnitMeasureCategory
+
+  ![unit measure category](https://github.com/sharon1160/sales-app/blob/main/imgs/unit_measure_category.jpg)
+
 * Table: Currency
+
+  ![currency](https://github.com/sharon1160/sales-app/blob/main/imgs/currency.jpg)
+
 * Table: Order
+
+  ![order](https://github.com/sharon1160/sales-app/blob/main/imgs/order.jpg)
+
 * Table: OrderItem
+
+  ![order item](https://github.com/sharon1160/sales-app/blob/main/imgs/order_item.jpg)
+
 * Table: Customer
+
+  ![customer](https://github.com/sharon1160/sales-app/blob/main/imgs/customer.jpg)
+
 * Table: User
+  
+  ![user](https://github.com/sharon1160/sales-app/blob/main/imgs/user.jpg)
 
 ## Endpoints :sparkles:
 
