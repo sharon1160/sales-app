@@ -26,7 +26,7 @@ The backend application is a RESTful API based on a wholesale distributor that s
 - **Django:** Django is an open source web development framework, written in Python, that adheres to the model–view–controller design pattern.
 - **Transactional Database:** MySQL Server version 8.0.27.
 - **Server:** Localhost.
-- **Postman:** for handling requests to the REST API.
+- **Postman:** API platform for developers to design, build, test, and iterate on their APIs.
 
 <a name="architecture"></a>
 ## Architecture :bank:
