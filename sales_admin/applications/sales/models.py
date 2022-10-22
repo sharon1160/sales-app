@@ -24,6 +24,8 @@ from django.db import models
 # Importamos la clase Product de la aplicación Warehouse
 from applications.warehouse.models import Product
 
+from django.core.exceptions import ValidationError
+
 # Importamos la constante IGV
 from applications.sales.config import IGV_PERCENT
 
@@ -132,7 +134,7 @@ class OrderItem(models.Model):
         Product, on_delete=models.CASCADE, db_column="product_id", verbose_name="Producto")
 
     # cantidad de productos
-    quantity = models.PositiveSmallIntegerField(default=0, validators=[
+    quantity = models.PositiveSmallIntegerField(validators=[
         MinValueValidator(0), MaxValueValidator(200)], verbose_name="Cantidad")
 
     total = models.DecimalField(
@@ -150,12 +152,17 @@ class OrderItem(models.Model):
         """
         Sobre escribimos el método save de la clase Model para la clase OrderItem.
         """
-        # Calculamos el precio total
-        self.total = round(float(self.product_id.sale_price)
-                           * int(self.quantity), 2)
+        # verificamos si la cantidad no supera el stock del producto
+        if abs(self.quantity) <= self.product_id.stock:
 
-        # Guardamos información del modelo OrderItem
-        super(OrderItem, self).save(*args, **kwargs)
+            # Calculamos el precio total
+            self.total = round(float(self.product_id.sale_price)
+                               * int(self.quantity), 2)
+
+            # Guardamos información del modelo OrderItem
+            super(OrderItem, self).save(*args, **kwargs)
+        else:
+            raise ValidationError("Cantidad excede a stock")
 
     class Meta:
         db_table = "order_item"
