@@ -23,6 +23,14 @@ The backend application is a RESTful API based on a wholesale distributor that s
 
 <a name="techstack"></a>
 ## Tech Stack :computer:
+- **RESTful API:** RESTful API written in Typescript on the Node Express framework.
+- **Transactional Database:** MySQL Server version 8.0.27.
+- **Cache Server:** Redis version 6.2.7.
+- **Web Server:** Nginx 1.18.0 for handling requests to the REST API.
+- SSL certificate.
+- Cloudflare as Reverse Proxy + WAF
+- JWT encrypted with public/private key using RSA algorithm.
+- **Google Cloud Storage** to store product images.
 
 <a name="architecture"></a>
 ## Architecture :bank:
