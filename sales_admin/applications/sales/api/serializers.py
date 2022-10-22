@@ -42,3 +42,26 @@ class CustomerSerializer(ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
+
+
+class GainSerializer(ModelSerializer):
+    """
+    Clase para obtener la ganacia usando el objeto Order
+    """
+
+    purchase_price = SerializerMethodField('get_purchase_price')
+    gain = SerializerMethodField('get_gain')
+    total = SerializerMethodField('get_total')
+
+    def get_purchase_price(self, order):
+        return (abs(order.total) + abs(order.discount_total)) - abs(order.igv)
+
+    def get_gain(self, order):
+        return abs(order.total) - abs((abs(order.total) + abs(order.discount_total)) - abs(order.igv))
+
+    def get_total(self, order):
+        return float(order.total)
+
+    class Meta:
+        model = Order
+        fields = ['number', 'total', 'purchase_price', 'gain']
