@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_http_methods
 from applications.warehouse.models import ProductCategory
+from applications.warehouse.models import Product
 from django.views.decorators.csrf import csrf_protect
 from applications.warehouse.forms import ProductCategoryForm
 from django.http import HttpResponse
 
 # Create your views here.
+
 
 def index(request):
     """
@@ -13,6 +15,22 @@ def index(request):
     Función que devuelve página home del módulo de almacén.
     """
     return render(request, 'warehouse/index.html')
+
+
+def product_list(request):
+    """
+    Función que devolverá la lista de categorías.
+    Vista basada en función.
+    """
+    # link: https://docs.djangoproject.com/en/4.1/topics/db/queries/
+
+    # Obtenemos los registros de la tabla product
+    product_list = Product.objects.all().order_by('-id')
+
+    return render(request, 'warehouse/product/list.html', {
+        'product_list': product_list
+    })
+
 
 def product_category_list(request):
     """
@@ -30,7 +48,7 @@ def product_category_list(request):
     })
 
 
-def detail(request, product_category_id):
+def product_category_detail(request, product_category_id):
     product_category = get_object_or_404(
         ProductCategory, pk=int(product_category_id))
     return render(request, "warehouse/product_category/detail.html", {
@@ -38,7 +56,15 @@ def detail(request, product_category_id):
     })
 
 
-def new(request):
+def product_detail(request, product_id):
+    product = get_object_or_404(
+        Product, pk=int(product_id))
+    return render(request, "warehouse/product/detail.html", {
+        "product": product
+    })
+
+
+def new_product_category(request):
     """
     Función que devuelve el formulario para agregar una nueva categoría de producto
     """
@@ -61,7 +87,7 @@ def save(request):
     """
     Función para registrar los datos del formulario en la base de datos.
     """
-    #print(request.POST)
+    # print(request.POST)
     form = ProductCategoryForm(request.POST)
     if form.is_valid():
         try:
@@ -69,11 +95,12 @@ def save(request):
             code = form.cleaned_data.get('code')
             name = form.cleaned_data.get('name')
             percent_discount = int(form.cleaned_data.get('percent_discount'))
-            pc = ProductCategory(code=code, name=name,percent_discount=percent_discount)
+            pc = ProductCategory(code=code, name=name,
+                                 percent_discount=percent_discount)
             pc.save()
 
             # Alternativa 2
-            #form.save()
+            # form.save()
 
             return render(request, 'warehouse/product_category/new.html', {'form': form})
             # return HttpResponse("Categoría creada con éxito")

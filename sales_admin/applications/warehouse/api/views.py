@@ -1,4 +1,4 @@
-from rest_framework.viewsets import ModelViewSet, ViewSet
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from applications.warehouse.models import ProductCategory
 from applications.warehouse.api.serializers import ProductCategorySerializer
