@@ -18,7 +18,7 @@ The backend application is a RESTful API based on a wholesale distributor that s
 * [Environment Variables](#env) :sparkles:
 * [Database Entity Model](#dbmodel) :sparkles:
 * [Database Information](#dbinfo) :sparkles:
-* Endpoints :sparkles:
+* [Endpoints](#endpoints) :sparkles:
   * [API Sales Home](#endpointHomeSales)
   * [API Order List Filter with Pagination](#endpointOrderList)
   * [API Get Order with Token](#endpointOrderToken)
@@ -128,6 +128,8 @@ Based on the requirements, a basic entity model of a relational database was def
   
   ![user](https://github.com/sharon1160/sales-app/blob/main/imgs/user.jpg)
 
+
+<a name="endpoints"></a>
 ## Endpoints :sparkles:
 
 <a name="endpointHomeSales"></a>
