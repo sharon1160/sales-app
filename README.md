@@ -26,6 +26,8 @@ The backend application is a RESTful API based on a wholesale distributor that s
   - [API Order List by Order number](#endpointOrderNumber)
   - [API Order List by Order date](#endpointOrderDate)
   - [API Order List by Delivery date](#endpointOrderDelivery)
+  - [API Gain List](#endpointGainList)
+  - [API Gain List by Order number](#endpointGainListNumber)
   - [API Customer List](#endpointCustomerList)
   - [API Customer List by RUC](#endpointCustomerListRuc)
   - [API Customer List by Category](#endpointCustomerListCategory)
@@ -442,6 +444,85 @@ Example Response:
   ]
 }
 ```
+
+
+
+<a name="endpointGainList"></a>
+
+### Endpoint: Gain List
+
+```
+GET / api/sales/gains/
+```
+
+Example Response:
+
+```json
+{
+    "count": 6,
+    "next": "http://0.0.0.0:8000/api/sales/gains/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "number": "202200001",
+            "total": 5367.11,
+            "purchase_price": 4772.4,
+            "gain": 594.71
+        },
+        {
+            "number": "202200002",
+            "total": 1150.5,
+            "purchase_price": 975.0,
+            "gain": 175.5
+        },
+        {
+            "number": "202200003",
+            "total": 187.97,
+            "purchase_price": 159.86,
+            "gain": 28.11
+        },
+        {
+            "number": "202200004",
+            "total": 115.64,
+            "purchase_price": 98.0,
+            "gain": 17.64
+        },
+        {
+            "number": "202200005",
+            "total": 164.61,
+            "purchase_price": 139.5,
+            "gain": 25.11
+        }
+    ]
+}
+```
+
+<a name="endpointGainListNumber"></a>
+
+### Endpoint: Gain List by Order number
+
+```
+GET / api/sales/gains/?number=202200001
+```
+
+Example Response:
+
+```json
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "number": "202200001",
+            "total": 5367.11,
+            "purchase_price": 4772.4,
+            "gain": 594.71
+        }
+    ]
+}
+```
+
 
 <a name="endpointCustomerList"></a>
 
