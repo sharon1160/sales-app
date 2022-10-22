@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from applications.sales.models import Order, OrderItem, Customer
-from applications.sales.api.serializers import OrderSerializer, OrderItemSerializer, CustomerSerializer
+from applications.sales.api.serializers import OrderSerializer, OrderItemSerializer, CustomerSerializer, GainSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
 
@@ -93,3 +93,21 @@ class CustomerViewSet(ModelViewSet):
     filterset_fields = ['ruc', 'category']
 
     Ordering_fields = ['id']
+
+
+class GainViewSet(ModelViewSet):
+    """
+    Clase ViewSet de Customer
+    """
+    # Obtenemos los datos que queremos devolver
+    queryset = Order.objects.all()
+
+    # Le indicamos el serializer que debe utilizar para convertir los objetos a JSON
+    serializer_class = GainSerializer
+
+    # Configuracion para que el VIEW sea utilizado por usuarios autenticados
+    # permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['number']
+
+    Ordering_fields = ['date']
