@@ -182,8 +182,8 @@ def update_order(sender, instance, **kwargs):
         float(instance.order_id.subtotal) * (IGV_PERCENT/100), 2)
 
     # Actualizamos el total del pedido
-    instance.order_id.total = round(
-        float(instance.order_id.subtotal) + float(instance.order_id.igv), 2)
+    instance.order_id.total = float(round(
+        float(instance.order_id.subtotal) + float(instance.order_id.igv), 2))
 
     # Actualizamos el descuento total del pedido
     instance.order_id.discount_total = round(
